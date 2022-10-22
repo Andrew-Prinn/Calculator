@@ -32,17 +32,18 @@ function operate(operator,a,b){
 
 let buttonList = document.getElementsByClassName('number');
 for (button of buttonList) {
-    button.addEventListener('click', buttonFunction);
+    button.addEventListener('click', addNumberToDisplay);
   }
 
-function buttonFunction(e){
+function addNumberToDisplay(e){
     const display = document.getElementById("display");
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
-    if (e.target.id == "clear"){
-       while (display.hasChildNodes()){
-        display.removeChild(display.lastChild)
-       }
-    }
 }
 
+function clearFunction(){
+    const display = document.getElementById("display");
+    while (display.hasChildNodes()){
+        display.removeChild(display.firstChild);
+    }
+}
