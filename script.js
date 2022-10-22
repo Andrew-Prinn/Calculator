@@ -34,6 +34,8 @@ for (button of buttonList) {
     button.addEventListener('click', buttonFunction);
   }
 
-  function buttonFunction(){
-    document.getElementById("display").innerHTML = text;
+  function buttonFunction(e){
+    document.getElementById("display").innerHTML = e.target.id;
   }
+
+console.log(button.id);
