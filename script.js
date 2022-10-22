@@ -29,11 +29,11 @@ function operate(operator,a,b){
   };
 };
 
-function myFunction(){
-console.log("Hello World!")
-};
+let buttonList = document.querySelectorAll('button');
+for (button of buttonList) {
+    button.addEventListener('click', buttonFunction);
+  }
 
-
-
-
-
+  function buttonFunction(){
+    document.getElementById("display").innerHTML = text;
+  }
