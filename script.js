@@ -30,7 +30,7 @@ function operate(operator,a,b){
 };
 
 
-let buttonList = document.querySelectorAll('button');
+let buttonList = document.getElementsByClassName('number');
 for (button of buttonList) {
     button.addEventListener('click', buttonFunction);
   }
@@ -45,3 +45,4 @@ function buttonFunction(e){
        }
     }
 }
+

@@ -50,11 +50,10 @@ button:hover{
 }
 
 #display {
-transition: all;
-transition-duration: 250ms;
 display: flex;
 align-items: flex-end;
 justify-content: center;
+height: 20px;
 font-size: 60px;
 background-color: #e8ecf2;
 color: #73787d;
