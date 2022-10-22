@@ -28,7 +28,7 @@ function operate(operator,a,b){
         return null;
   };
 };
-let displayValue = "";
+
 
 let buttonList = document.querySelectorAll('button');
 for (button of buttonList) {
@@ -36,6 +36,7 @@ for (button of buttonList) {
   }
 
 function buttonFunction(e){
-    document.getElementById("display").innerHTML = e.target.id;
-    displayValue = e.target.id;
+    const display = document.getElementById("display");
+    const displayValue = document.createTextNode(e.target.id);
+    display.appendChild(displayValue);
 }
