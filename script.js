@@ -39,4 +39,9 @@ function buttonFunction(e){
     const display = document.getElementById("display");
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
+    if (e.target.id == "clear"){
+       while (display.hasChildNodes()){
+        display.removeChild(display.lastChild)
+       }
+    }
 }
