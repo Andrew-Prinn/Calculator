@@ -28,14 +28,14 @@ function operate(operator,a,b){
         return null;
   };
 };
+let displayValue = "";
 
 let buttonList = document.querySelectorAll('button');
 for (button of buttonList) {
     button.addEventListener('click', buttonFunction);
   }
 
-  function buttonFunction(e){
+function buttonFunction(e){
     document.getElementById("display").innerHTML = e.target.id;
-  }
-
-console.log(button.id);
+    displayValue = e.target.id;
+}
