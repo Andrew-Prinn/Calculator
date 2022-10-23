@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e8ecf2;
+    background-color: rgb(40, 40, 48);
     margin-top: 25px;
 }
 #container {
@@ -19,8 +19,7 @@ body {
     align-items: center;
     border-radius: 10%;
     background-color: #e8ecf2;
-    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.8), 
-    5px 5px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 button {
@@ -55,15 +54,15 @@ align-items: flex-end;
 justify-content: center;
 height: 20px;
 font-size: 60px;
-background-color: #e8ecf2;
-color: #73787d;
-margin: 100px;
+color: #e8ecf2;
+margin: 50px;
+margin-top:100px;
 text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 #gitHubLogo{
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 #gitHubLogo:hover{

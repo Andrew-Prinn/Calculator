@@ -1,25 +1,25 @@
 function add(a,b){
     sum = a+b;
     //display.appendChild(sum);
-    console.log("add works");
+    console.log(sum);
 }
 
 function subtract(a,b){
     sum = a-b;
    // display.appendChild(sum)    //
-    console.log("subtract works");
+    console.log(sum)
 }
 
 function multiply(a,b){
     product = a*b;
    // display.appendChild(product);
-    console.log("multiply works");
+    console.log(sum);
 }
 
 function divide(a,b){
     product = a/b;
    // display.appendChild(product);
-    console.log("divide works");
+    console.log(sum);
 }
 
 function selectOperator(e){
@@ -27,19 +27,19 @@ function selectOperator(e){
     console.log(operator);
 }
 
-function operate(operator,a,b){
+function operate(){
     console.log("the operator is " + operator);
   switch(operator){
     case '+':
-        return add(a,b);
+        add(a,b);
     case '-':
-        return subtract(a,b);
+        subtract(a,b);
     case '*':
-        return multiply(a,b);
+        multiply(a,b);
     case '/':
-        return divide(a,b);
+        divide(a,b);
     default:
-        return null;
+        null;
   };
 };
 document.getElementById("=").addEventListener('click', operate);
@@ -63,25 +63,6 @@ function clearFunction(){
 }
 
 let operatorsList = document.getElementsByClassName("operator");
-for (operators of operatorsList){
-    operators.addEventListener('click', selectOperator);
-}
-
-let a = 5; 
-let b = 3; 
-
-function opTest(){
-    console.log("test: the operator is " + operator);
-    switch(operator){
-        case '+':
-            return add(a,b);
-        case '-':
-            return subtract(a,b);
-        case '*':
-            return multiply(a,b);
-        case '/':
-            return divide(a,b);
-        default:
-            return null;
-      };
+for (operatorValues of operatorsList){
+    operatorValues.addEventListener('click', selectOperator);
 }
