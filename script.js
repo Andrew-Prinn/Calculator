@@ -13,13 +13,13 @@ function subtract(a,b){
 function multiply(a,b){
     product = a*b;
    // display.appendChild(product);
-    console.log(sum);
+    console.log(product);
 }
 
 function divide(a,b){
     product = a/b;
    // display.appendChild(product);
-    console.log(sum);
+    console.log(product);
 }
 
 function selectOperator(e){
@@ -32,14 +32,18 @@ function operate(){
   switch(operator){
     case '+':
         add(a,b);
+        break;
     case '-':
         subtract(a,b);
+        break;
     case '*':
         multiply(a,b);
+        break;
     case '/':
         divide(a,b);
+        break;
     default:
-        null;
+        return null;
   };
 };
 document.getElementById("=").addEventListener('click', operate);
@@ -66,3 +70,6 @@ let operatorsList = document.getElementsByClassName("operator");
 for (operatorValues of operatorsList){
     operatorValues.addEventListener('click', selectOperator);
 }
+
+let a = 9; 
+let b = 5;
