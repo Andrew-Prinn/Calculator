@@ -1,60 +1,63 @@
-function add(a,b){
-    sum = a+b;
-    //display.appendChild(sum);
-    console.log(sum);
+const display = document.getElementById("display");
+let x = 0; 
+let y = 0;
+
+function add(x,y){
+    total = x+y;
 }
 
-function subtract(a,b){
-    sum = a-b;
-   // display.appendChild(sum)    //
-    console.log(sum)
+function subtract(x,y){
+    total = x-y;
 }
 
-function multiply(a,b){
-    product = a*b;
-   // display.appendChild(product);
-    console.log(product);
+function multiply(x,y){
+    total = x*y;
 }
 
-function divide(a,b){
-    product = a/b;
-   // display.appendChild(product);
-    console.log(product);
+function divide(x,y){
+    total = x/y
 }
 
 function selectOperator(e){
-    operator = e.target.id;
-    console.log(operator);
+    operatorValue = e.target.id;
 }
 
 function operate(){
-    console.log("the operator is " + operator);
-  switch(operator){
+    let input = document.getElementById("display").innerHTML;
+    const inputsArray = input.split(operatorValue);
+    let x = parseFloat(inputsArray[0]);
+    let y = parseFloat(inputsArray[1]);
+    console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y)
+  switch(operatorValue){
     case '+':
-        add(a,b);
+        add(x,y);
         break;
     case '-':
-        subtract(a,b);
+        subtract(x,y);
         break;
     case '*':
-        multiply(a,b);
+        multiply(x,y);
         break;
     case '/':
-        divide(a,b);
+        divide(x,y);
         break;
     default:
         return null;
   };
+  console.log("the answer is " + total);
+
+  clearFunction();
+  const displayValue = document.createTextNode(total);
+  display.appendChild(displayValue);
 };
 document.getElementById("=").addEventListener('click', operate);
 
 let buttonList = document.getElementsByClassName('number');
 for (button of buttonList) {
-    button.addEventListener('click', addNumberToDisplay);
+    button.addEventListener('click', addToDisplay);
   }
 
-function addNumberToDisplay(e){
-    const display = document.getElementById("display");
+function addToDisplay(e){
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
 }
@@ -69,7 +72,8 @@ function clearFunction(){
 let operatorsList = document.getElementsByClassName("operator");
 for (operatorValues of operatorsList){
     operatorValues.addEventListener('click', selectOperator);
+    operatorValues.addEventListener('click', addToDisplay);
 }
 
-let a = 9; 
-let b = 5;
+let clearButton = document.getElementById("clear");
+clearButton.addEventListener('click', clearFunction);
