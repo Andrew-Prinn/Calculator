@@ -17,17 +17,6 @@ function divide(x,y){
     total = x/y
 }
 
-function selectOperator(e){
-    operatorClickCount++;
-    if (operatorClickCount > 1){
-        operate();
-    }
-    operatorValue = e.target.id;
-    x = parseFloat(display.innerHTML);
-    clearFunction();
-    y = parseFloat(display.innerHTML);
-}
-
 function operate(){
     y = parseFloat(display.innerHTML);
 console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y);
@@ -54,15 +43,14 @@ console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeo
 };
 document.getElementById("=").addEventListener('click', operate);
 
-let buttonList = document.getElementsByClassName('number');
-for (button of buttonList) {
-    button.addEventListener('click', addToDisplay);
-  }
-
 function addToDisplay(e){
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
 }
+let buttonList = document.getElementsByClassName('number');
+for (button of buttonList) {
+    button.addEventListener('click', addToDisplay);
+  }
 
 function clearFunction(){
     const display = document.getElementById("display");
@@ -70,19 +58,24 @@ function clearFunction(){
         display.removeChild(display.firstChild);
     }
 }
+let clearButton = document.getElementById("clear");
+clearButton.addEventListener('click', clearFunction);
 
+
+function selectOperator(e){
+    operatorClickCount++;
+    if (operatorClickCount > 1){
+        operate();
+    }
+    operatorValue = e.target.id;
+    x = parseFloat(display.innerHTML);
+    clearFunction();
+    y = parseFloat(display.innerHTML);
+}
 let operatorsList = document.getElementsByClassName("operator");
 for (operatorValues of operatorsList){
     operatorValues.addEventListener('click', selectOperator);
-    if (operatorClickCount > 1){
-        operate();
-        x = total; 
-        y = parseFloat(document.getElementById("display").innerHTML);
-    }
 }
-
-let clearButton = document.getElementById("clear");
-clearButton.addEventListener('click', clearFunction);
 
 function resetOperatorClickCount(){
     return operatorClickCount=0;
