@@ -1,7 +1,5 @@
 const display = document.getElementById("display");
-let x = 0; 
-let y = 0;
-let operatorClickCount = 0; 
+let operatorClickCount =0; 
 
 function add(x,y){
     total = x+y;
@@ -20,20 +18,19 @@ function divide(x,y){
 }
 
 function selectOperator(e){
-    operatorValue = e.target.id;
     operatorClickCount++;
     if (operatorClickCount > 1){
-        operate(); 
-        return x = total;
+        operate();
     }
+    operatorValue = e.target.id;
+    x = parseFloat(display.innerHTML);
+    clearFunction();
+    y = parseFloat(display.innerHTML);
 }
 
 function operate(){
-    let input = document.getElementById("display").innerHTML;
-    const inputsArray = input.split(operatorValue);
-    let x = parseFloat(inputsArray[0]);
-    let y = parseFloat(inputsArray[1]);
-    console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y)
+    y = parseFloat(display.innerHTML);
+console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y);
   switch(operatorValue){
     case '+':
         add(x,y);
@@ -51,7 +48,6 @@ function operate(){
         return null;
   };
   console.log("the answer is " + total);
-
   clearFunction();
   const displayValue = document.createTextNode(total);
   display.appendChild(displayValue);
@@ -78,9 +74,17 @@ function clearFunction(){
 let operatorsList = document.getElementsByClassName("operator");
 for (operatorValues of operatorsList){
     operatorValues.addEventListener('click', selectOperator);
-    operatorValues.addEventListener('click', addToDisplay);
+    if (operatorClickCount > 1){
+        operate();
+        x = total; 
+        y = parseFloat(document.getElementById("display").innerHTML);
+    }
 }
 
 let clearButton = document.getElementById("clear");
 clearButton.addEventListener('click', clearFunction);
 
+function resetOperatorClickCount(){
+    return operatorClickCount=0;
+}
+clearButton.addEventListener('click', resetOperatorClickCount);
