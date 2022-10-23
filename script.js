@@ -1,6 +1,7 @@
 const display = document.getElementById("display");
 let x = 0; 
 let y = 0;
+let operatorClickCount = 0; 
 
 function add(x,y){
     total = x+y;
@@ -20,6 +21,11 @@ function divide(x,y){
 
 function selectOperator(e){
     operatorValue = e.target.id;
+    operatorClickCount++;
+    if (operatorClickCount > 1){
+        operate(); 
+        return x = total;
+    }
 }
 
 function operate(){
@@ -77,3 +83,4 @@ for (operatorValues of operatorsList){
 
 let clearButton = document.getElementById("clear");
 clearButton.addEventListener('click', clearFunction);
+
