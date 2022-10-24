@@ -80,10 +80,16 @@ function selectOperator(e){
 function resetOperatorClickCount(){
     return operatorClickCount=0;
 }
+function equalsButtonFunction(){
+    if (operatorClickCount % 2 == 0){
+        y = parseFloat(display.innerHTML);
+    }
+    operate();
+}
 clearButton.addEventListener('click', resetOperatorClickCount);
 clearButton.addEventListener('click', clearTheDisplay);
-document.getElementById("=").addEventListener('click', operate);
 document.getElementById("=").addEventListener('click', resetOperatorClickCount);
+document.getElementById("=").addEventListener('click', equalsButtonFunction);
 let buttonList = document.getElementsByClassName('number');
 for (button of buttonList) {
     button.addEventListener('click', addToDisplay);
