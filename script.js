@@ -5,17 +5,21 @@ let operatorClickCount = 0;
 let x = 0;
 let clearDisplayToggleSwitch = 0;
 
+
 function add(x,y){
     total = x+y; 
 }
+
 function subtract(x,y){
     total = x-y;
-}
+};
+
 function multiply(x,y){
     total = x*y;
-}
+};
+
 function divide(x,y){
-    total = x/y
+    total = x/y;
 }
 function operate(){
   clearDisplayToggleSwitch++;
@@ -43,9 +47,12 @@ function operate(){
                 ". typeof x ="+ typeof x + 
                 "and typeof y ="+typeof y+" and the answer is " + total);
     clearTheDisplay();
+    if (total == Infinity){
+        total = "LOL"
+    }
     const displayValue = document.createTextNode(total);
     display.appendChild(displayValue);
-};
+}
 function addToDisplay(e){
     if (clearDisplayToggleSwitch === 1){
         clearTheDisplay();
