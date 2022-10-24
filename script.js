@@ -1,7 +1,9 @@
 const display = document.getElementById("display");
 const clearButton = document.getElementById("clear");
+
 let operatorClickCount = 0; 
 let x = 0;
+let clearDisplayToggleSwitch = 0;
 
 function add(x,y){
     total = x+y; 
@@ -16,6 +18,7 @@ function divide(x,y){
     total = x/y
 }
 function operate(){
+  clearDisplayToggleSwitch++;
     if (operatorClickCount % 2 == 0){
         y = y = parseFloat(display.innerHTML);
     }
@@ -44,8 +47,9 @@ function operate(){
     display.appendChild(displayValue);
 };
 function addToDisplay(e){
-    if (operatorClickCount > 1){
+    if (clearDisplayToggleSwitch === 1){
         clearTheDisplay();
+      clearDisplayToggleSwitch--;
     }
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
@@ -85,6 +89,12 @@ function equalsButtonFunction(){
         y = parseFloat(display.innerHTML);
     }
     operate();
+}
+function clearDisplayToggleSwitchOn(){
+  equalsButtonToggleSwitch = 1;
+}
+function clearDisplayToggleSwitchOff(){
+  equalsButtonToggleSwitch = 0;
 }
 clearButton.addEventListener('click', resetOperatorClickCount);
 clearButton.addEventListener('click', clearTheDisplay);
