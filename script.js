@@ -1,26 +1,24 @@
 const display = document.getElementById("display");
-let operatorClickCount =0; 
+const clearButton = document.getElementById("clear");
+let operatorClickCount = 0; 
+let x = 0;
 
 function add(x,y){
-    total = x+y;
-    
+    total = x+y; 
 }
-
 function subtract(x,y){
     total = x-y;
 }
-
 function multiply(x,y){
     total = x*y;
 }
-
 function divide(x,y){
     total = x/y
 }
-
 function operate(){
-    y = parseFloat(display.innerHTML);
-    console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y);
+    if (operatorClickCount % 2 == 0){
+        y = y = parseFloat(display.innerHTML);
+    }
   switch(operatorValue){
     case '+':
         add(x,y);
@@ -37,44 +35,61 @@ function operate(){
     default:
         return null;
   };
-    console.log("the answer is " + total);
-    clearFunction();
+    console.log("x is "+x+" and y is "+y+
+                ". The operator is "+operatorValue+
+                ". typeof x ="+ typeof x + 
+                "and typeof y ="+typeof y+" and the answer is " + total);
+    clearTheDisplay();
     const displayValue = document.createTextNode(total);
     display.appendChild(displayValue);
 };
-document.getElementById("=").addEventListener('click', operate);
-
 function addToDisplay(e){
+    if (operatorClickCount > 1){
+        clearTheDisplay();
+    }
     const displayValue = document.createTextNode(e.target.id);
     display.appendChild(displayValue);
 }
-let buttonList = document.getElementsByClassName('number');
-for (button of buttonList) {
-    button.addEventListener('click', addToDisplay);
-  }
-
-function clearFunction(){
+function clearTheDisplay(){
     const display = document.getElementById("display");
     while (display.hasChildNodes()){
         display.removeChild(display.firstChild);
     }
 }
-let clearButton = document.getElementById("clear");
-clearButton.addEventListener('click', clearFunction);
-
 function selectOperator(e){
     operatorClickCount++;
-    operatorValue = e.target.id;
-    x = parseFloat(display.innerHTML);
-    clearFunction();
-    y = parseFloat(display.innerHTML);
-}
-let operatorsList = document.getElementsByClassName("operator");
-for (operatorValues of operatorsList){
-    operatorValues.addEventListener('click', selectOperator);
-}
+    console.log("alternation ="+operatorClickCount%2+", count total = "+operatorClickCount);
+    if (operatorClickCount == 1){
+        x = parseFloat(display.innerHTML);
+        clearTheDisplay();
+    }
+    if (operatorClickCount % 2 == 1){
+        y = parseFloat(display.innerHTML);
+        clearTheDisplay();
+    }
 
+    if (operatorClickCount % 2 == 0){
+        y = parseFloat(display.innerHTML);
+    }
+    if (operatorClickCount > 1){
+        operate();
+        x = parseFloat(display.innerHTML);
+    }
+    operatorValue = e.target.id;
+}
 function resetOperatorClickCount(){
     return operatorClickCount=0;
 }
 clearButton.addEventListener('click', resetOperatorClickCount);
+clearButton.addEventListener('click', clearTheDisplay);
+document.getElementById("=").addEventListener('click', operate);
+document.getElementById("=").addEventListener('click', resetOperatorClickCount);
+let buttonList = document.getElementsByClassName('number');
+for (button of buttonList) {
+    button.addEventListener('click', addToDisplay);
+  }
+  let operatorsList = document.getElementsByClassName("operator");
+  for (operatorValues of operatorsList){
+      operatorValues.addEventListener('click', selectOperator);
+  }
+  
