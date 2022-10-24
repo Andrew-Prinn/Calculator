@@ -3,6 +3,7 @@ let operatorClickCount =0;
 
 function add(x,y){
     total = x+y;
+    
 }
 
 function subtract(x,y){
@@ -19,7 +20,7 @@ function divide(x,y){
 
 function operate(){
     y = parseFloat(display.innerHTML);
-console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y);
+    console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeof x ="+ typeof x + "and typeof y ="+typeof y);
   switch(operatorValue){
     case '+':
         add(x,y);
@@ -36,10 +37,10 @@ console.log("x is "+x+" and y is "+y+". The operator is "+operatorValue+". typeo
     default:
         return null;
   };
-  console.log("the answer is " + total);
-  clearFunction();
-  const displayValue = document.createTextNode(total);
-  display.appendChild(displayValue);
+    console.log("the answer is " + total);
+    clearFunction();
+    const displayValue = document.createTextNode(total);
+    display.appendChild(displayValue);
 };
 document.getElementById("=").addEventListener('click', operate);
 
@@ -61,12 +62,8 @@ function clearFunction(){
 let clearButton = document.getElementById("clear");
 clearButton.addEventListener('click', clearFunction);
 
-
 function selectOperator(e){
     operatorClickCount++;
-    if (operatorClickCount > 1){
-        operate();
-    }
     operatorValue = e.target.id;
     x = parseFloat(display.innerHTML);
     clearFunction();
