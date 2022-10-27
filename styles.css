@@ -48,6 +48,9 @@ button:hover{
         inset 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+button:active{
+    color:red;
+}
 #display {
 display: flex;
 align-items: flex-end;
