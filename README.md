@@ -1,2 +1,3 @@
-<img width="1440" alt="Screen Shot 2022-11-01 at 3 22 16 PM" src="https://user-images.githubusercontent.com/86674284/199320741-df2c1f19-937a-400d-8d7e-317046175fb1.png">
+<img width="1440" alt="Calculator ss" src="https://user-images.githubusercontent.com/86674284/199325807-8c25f1b2-5936-4d33-a3a7-6f6b5759aff0.png">
+
 It's a calculator! 
